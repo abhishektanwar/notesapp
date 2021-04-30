@@ -4,6 +4,12 @@ import firebase from 'firebase/app'
 import {firestore} from './firebase'
 import Sidebar from './sidebar/Sidebar'
 import Editor from './editor/Editor'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import PrivateRoute from "./PrivateRoutes"
+import {AuthProvider} from "./context/AuthContext"
+import Home from './Home'
+import SignUp from './Auth/SignUp';
+import Login from './Auth/Login';
 function App() {
 	const [selectedNoteIndex,setSelectedNoteIndex] = useState(null)
 	const [selectedNote,setSelectedNote] = useState(null)
@@ -66,15 +72,26 @@ function App() {
 	}
 
 	return (
-		<div>
-			<button onClick={handleCreateNotebook}>CreateNotebook</button>
-			<Sidebar selectedNoteIndex={selectedNoteIndex} notes={notes} deleteNote={deleteNote} selectNote={selectNote} newNote={newNote} />
-			{selectedNote ?
-			<Editor selectedNote={selectedNote} selectedNoteIndex={selectedNoteIndex} notes={notes} noteUpdate={noteUpdate} /> : null
-		}
+		// <div>
+		// 	<button onClick={handleCreateNotebook}>CreateNotebook</button>
+		// 	<Sidebar selectedNoteIndex={selectedNoteIndex} notes={notes} deleteNote={deleteNote} selectNote={selectNote} newNote={newNote} />
+		// 	{selectedNote ?
+		// 	<Editor selectedNote={selectedNote} selectedNoteIndex={selectedNoteIndex} notes={notes} noteUpdate={noteUpdate} /> : null
+		// }
 			
 
-		</div>
+		// </div>
+		<Router>
+			<AuthProvider>
+				<div>
+					<Switch>
+						<PrivateRoute exact path="/" component={Home} />
+						<Route path="/signup" component={SignUp} />
+						<Route path="/login" component={Login} />
+					</Switch>
+				</div>
+			</AuthProvider>
+		</Router>
 	);
 }
 
