@@ -5,25 +5,36 @@ import BorderColorIcon from '@material-ui/icons/BorderColor'
 import {withStyles} from '@material-ui/core/styles'
 // import styles from './Styles'
 
-const Editor = () => {
+const Editor = ({selectedNote,selectedNoteIndex,notes,noteUpdate}) => {
 	const [text,setText] = useState('')
 	const [title,setTitle] = useState('')
 	const [id,setId] = useState('')
 
-	const updateBody = async(val) =>{
+	useEffect(()=>{
+		setText(selectedNote.body)
+		setTitle(selectedNote.title)
+		setId(selectedNote.id)
+	},[selectedNote])
+	const updateBody = (val) =>{
 		// console.log(val)
-		await setText(val)
+		setText(val)
+		console.log("text from updateBody",text)
 		update()
 	}
 
 	const update = debounce(()=>{
 		console.log("updating db")
+		noteUpdate(id,{
+			title:title,
+			body:text
+		})
 	},1500)
 
-	useEffect(() => {
-		console.log(text)
+
+	// useEffect(() => {
+	// 	console.log(text)
 		
-	}, [text])
+	// }, [text])
 
 	return (
 		<div className="editorContainer"> 

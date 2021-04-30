@@ -5,7 +5,7 @@ import { Divider,Button } from '@material-ui/core'
 import Sidebaritem from '../sidebaritem/Sidebaritem'
 const Sidebar = (pr) => {
 	const [addingNote,setAddingNote] = useState(false)
-	const {notes,selectedNoteIndex} = pr
+	const {notes,selectedNoteIndex,selectNote} = pr
 	const [title,setTitle] = useState('')
 	const newNoteBtnClick = () => {
 		console.log("new note btn clicked")
@@ -23,12 +23,16 @@ const Sidebar = (pr) => {
 		console.log(addingNote,title)
 	}
 
-	const selectNote = () => {
-		console.log("select not")
-	}
+	// const selectNote = (note,index) => {
+	// 	console.log("select not sidebar")
+	// 	selectNote(note,index)
+	// }
 
 	const deleteNote = (note) => {
 		console.log("delete click",note);
+		// if(window.comfirm(`Are You sure you want to delete:${note.title}`)){
+
+		// }
 	}
 	return (
 		<div className="sidebarContainer">
