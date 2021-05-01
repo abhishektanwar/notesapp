@@ -11,10 +11,10 @@ const Sidebaritem = ({note,index,selectedNoteIndex,selectNote,deleteNote}) => {
 				selected={selectedNoteIndex ===index}
 				alignItems='flex-start'
 			>
-				<div className="textSection" onClick={()=>selectNote(note,index)}>
+				<div className="textSelection" onClick={()=>selectNote(note,index)}>
 					<ListItemText
 						primary={note.title}
-						secondary = {removeHTMLTags(note.body.substring(0,30))+'...'}
+						secondary = {removeHTMLTags(note && `${note.body.substr(0,30)}...`)}
 					>
 
 					</ListItemText>

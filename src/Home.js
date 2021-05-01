@@ -9,8 +9,10 @@ import Editor from './editor/Editor'
 
 const Home = () => {
 	const {currentUser,logout} = useAuth()
-	const [todos,setTodos] = useState([])
 	const [error,setError] = useState('')
+	const [selectedNoteIndex,setSelectedNoteIndex] = useState(null)
+	const [selectedNote,setSelectedNote] = useState(null)
+	const [notes,setNotes] = useState([])
 	// const { logout } = useAuth()
 	const history = useHistory()
 	async function handleLogout(){
@@ -25,9 +27,7 @@ const Home = () => {
 
 	}
 
-	const [selectedNoteIndex,setSelectedNoteIndex] = useState(null)
-	const [selectedNote,setSelectedNote] = useState(null)
-	const [notes,setNotes] = useState([])
+	
 
 	useEffect(()=>{
 		firestore.collection('notes')
@@ -95,10 +95,30 @@ const Home = () => {
 
 		<div>
 			{/* <button onClick={handleCreateNotebook}>CreateNotebook</button> */}
-			<Sidebar selectedNoteIndex={selectedNoteIndex} notes={notes} deleteNote={deleteNote} selectNote={selectNote} newNote={newNote} />
+			{/* <Sidebar selectedNoteIndex={selectedNoteIndex} notes={notes} deleteNote={deleteNote} selectNote={selectNote} newNote={newNote} />
 			{selectedNote ?
 			<Editor selectedNote={selectedNote} selectedNoteIndex={selectedNoteIndex} notes={notes} noteUpdate={noteUpdate} /> : null
-		}
+		} */}
+		<div className="container">
+			<Sidebar 
+				setSelectedNote = {setSelectedNote}
+				setSelectedNoteIndex = {setSelectedNoteIndex}
+				setNotes = {setNotes}
+				notes = {notes}
+				selectedNoteIndex = {selectedNoteIndex}
+				selectedNote = {selectedNote}
+			/>
+			{
+				selectedNote && <Editor
+				setSelectedNote = {setSelectedNote}
+				setSelectedNoteIndex = {setSelectedNoteIndex}
+				setNotes = {setNotes}
+				notes = {notes}
+				selectedNoteIndex = {selectedNoteIndex}
+				selectedNote = {selectedNote} />
+			}
+
+		</div>
 		</div>
 	)
 }

@@ -11,65 +11,65 @@ import Home from './Home'
 import SignUp from './Auth/SignUp';
 import Login from './Auth/Login';
 function App() {
-	const [selectedNoteIndex,setSelectedNoteIndex] = useState(null)
-	const [selectedNote,setSelectedNote] = useState(null)
-	const [notes,setNotes] = useState([])
+	// const [selectedNoteIndex,setSelectedNoteIndex] = useState(null)
+	// const [selectedNote,setSelectedNote] = useState(null)
+	// const [notes,setNotes] = useState([])
 
-	useEffect(()=>{
-		firestore.collection('notes')
-		.onSnapshot(snap => {
-			console.log("span",snap.docs)
-			const notes = snap.docs.map(doc=>{
-				const data = doc.data();
-				console.log("daa",data)
-				data['id'] = doc.id;
-				return data
-			})
-			console.log(notes)
-			setNotes(notes)
+	// useEffect(()=>{
+	// 	firestore.collection('notes')
+	// 	.onSnapshot(snap => {
+	// 		console.log("span",snap.docs)
+	// 		const notes = snap.docs.map(doc=>{
+	// 			const data = doc.data();
+	// 			console.log("daa",data)
+	// 			data['id'] = doc.id;
+	// 			return data
+	// 		})
+	// 		console.log(notes)
+	// 		setNotes(notes)
 
 			
 			
-		})
-	},[])
+	// 	})
+	// },[])
 
-	const selectNote = (note,index) => {
-		console.log("app.js",note,index)
-		setSelectedNote(note)
-		setSelectedNoteIndex(index)
-	}
+	// const selectNote = (note,index) => {
+	// 	console.log("app.js",note,index)
+	// 	setSelectedNote(note)
+	// 	setSelectedNoteIndex(index)
+	// }
 
-	const deleteNote = () => {
+	// const deleteNote = () => {
 
-	}
+	// }
 
-	const newNote = (title) => {
-		const note = {
-			title:title,
-			body:''
-		}
-		firestore.collection('notes').add({
-			title:note.title,
-			body:note.body,
-			timestamp: firebase.firestore.FieldValue.serverTimestamp()
-		})
-	}
+	// const newNote = (title) => {
+	// 	const note = {
+	// 		title:title,
+	// 		body:''
+	// 	}
+	// 	firestore.collection('notes').add({
+	// 		title:note.title,
+	// 		body:note.body,
+	// 		timestamp: firebase.firestore.FieldValue.serverTimestamp()
+	// 	})
+	// }
 
-	const handleCreateNotebook = () => {
+	// const handleCreateNotebook = () => {
 
-	}
+	// }
 
-	const noteUpdate = (id,noteObj) => {
-		console.log(id,noteObj);
-		if(id !==''){
-			firestore.collection('notes').doc(id).update({
-				title:noteObj.title,
-				body:noteObj.body,
-				timestamp: firebase.firestore.FieldValue.serverTimestamp()
-			})
-		}
+	// const noteUpdate = (id,noteObj) => {
+	// 	console.log(id,noteObj);
+	// 	if(id !==''){
+	// 		firestore.collection('notes').doc(id).update({
+	// 			title:noteObj.title,
+	// 			body:noteObj.body,
+	// 			timestamp: firebase.firestore.FieldValue.serverTimestamp()
+	// 		})
+	// 	}
 		
-	}
+	// }
 
 	return (
 		// <div>
