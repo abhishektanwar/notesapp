@@ -8,7 +8,7 @@ import {firestore} from '../firebase'
 import { useAuth } from '../context/AuthContext'
 import useDebounce from '../helpers'
 import firebase from 'firebase/app'
-import './Styles.css'
+// import './Styles.css'
 // import styles from './Styles'
 
 const Editor = ({selectedNote,selectedNoteIndex,notes,noteUpdate}) => {
@@ -18,35 +18,7 @@ const Editor = ({selectedNote,selectedNoteIndex,notes,noteUpdate}) => {
 	// useEffect(()=>{
 	// 	console.log(selectedNote)
 	// },[selectedNote])
-	// // old code
-	// useEffect(()=>{
-	// 	setText(selectedNote.body)
-	// 	setTitle(selectedNote.title)
-	// 	setId(selectedNote.id)
-	// },[selectedNote])
-	// const updateBody = (val) =>{
-	// 	// console.log(val)
-	// 	setText(val)
-	// 	console.log("text from updateBody",text)
-	// 	// update()
-	// }
 
-	// const update = debounce(()=>{
-	// 	console.log("updating db")
-	// 	// noteUpdate(id,{
-	// 	// 	title:title,
-	// 	// 	body:text
-	// 	// })
-	// },1500)
-
-
-
-	// useEffect(() => {
-	// 	console.log(text)
-		
-	// }, [text])
-
-	// new code
 	const updateBodyDebounce = useDebounce(text, 1500);
 	const updateTitleDebounce = useDebounce(title, 1500);
 	useEffect(()=>{
@@ -56,42 +28,38 @@ const Editor = ({selectedNote,selectedNoteIndex,notes,noteUpdate}) => {
 
 	useEffect(() => {
 		if (updateBodyDebounce) {
-		  firestore
+		firestore
 			.collection(`users/${currentUser.uid}/notes`)
 			.doc(selectedNote.id)
 			.update({
-			  body: text,
-			  updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+			body: text,
+			updatedAt:firebase.firestore.FieldValue.serverTimestamp()
 			});
 		}
-	  }, [updateBodyDebounce]);
+	}, [updateBodyDebounce]);
 	
-	  useEffect(() => {
+	useEffect(() => {
 		firestore
-		  .collection(`users/${currentUser.uid}/notes`)
-		  .doc(selectedNote.id)
-		  .update({
+		.collection(`users/${currentUser.uid}/notes`)
+		.doc(selectedNote.id)
+		.update({
 			title: title,
-		  });
-	  }, [updateTitleDebounce]);
+		});
+	}, [updateTitleDebounce]);
 
 	
-	  const updateNote = (text) => {
+	const updateNote = (text) => {
 		setText(text);
 		console.log(text)
-	  };
-	  const updateTitle = (e) => {
+	};
+	const updateTitle = (e) => {
 		setTitle(e.target.value);
 		console.log(title)
-	  };
+	};
 
 
 
 	return (
-		// <div className="editorContainer"> 
-		// 	{/* text editor provided by the react-quill library  */}
-		// 	<ReactQuill value={text} onChange={updateBody}></ReactQuill>
-		// </div>
 		<div className="editorContainer">
 			<div className="editorHeader">
 				<BorderColorIcon classname="editIcon" />
