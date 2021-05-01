@@ -33,6 +33,10 @@ const SignUp = () => {
 	return (
 		
 		<>
+			<div className="app-title-container">
+				<h1 className="app-title">Gummed Notes</h1>
+				<p>Your go to notes taking app</p>
+			</div>
 			<div className="signup-form-container">
 			<h1>Sign Up</h1>
 			<div className="alert">

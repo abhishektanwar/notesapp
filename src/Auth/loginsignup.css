@@ -7,19 +7,6 @@
 	height: 100%;
 }
 
-.login-form-container,
-.signup-form-container{
-	/* display: flex; */
-	flex-direction: column;
-	justify-content: start;
-	width: 520px;
-	background: #161a2b;
-	min-height: 600px;
-	text-align: center;
-	margin: 128px auto;
-	border-radius: 10px;
-	/* padding-bottom: 32px; */
-}
 .login-field,
 .signup-field{
 	/* padding-bottom: 20px; */
@@ -76,3 +63,36 @@ h1{
 	color:#fff;
 	margin-top: 35px;
 }
+
+.login-form-container,
+.signup-form-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	width: 520px;
+	background: #161a2b;
+	min-height: 600px;
+	text-align: center;
+	margin: 70px auto;
+	border-radius: 10px;
+	padding-bottom: 32px;
+}
+
+.app-title-container{
+	display: flex;
+	flex-direction: column;
+	margin: 50px auto;
+	text-align: center;
+
+}
+
+.app-title-container h1{
+	font-size: xx-large;
+}
+.app-title-container p{
+	margin-top: -10px;
+}
+.app-title{
+	color: #161a2b;
+}
+

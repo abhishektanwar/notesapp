@@ -16,75 +16,7 @@ const Home = () => {
 	const [notes,setNotes] = useState([])
 	// const { logout } = useAuth()
 	const history = useHistory()
-	async function handleLogout(){
-		setError('')
-		try{
-			await logout()
-			history.push('/login')
-		}
-		catch{
-			setError("failed to logout")
-		}
-
-	}
-
 	
-
-	useEffect(()=>{
-		firestore.collection('notes')
-		.onSnapshot(snap => {
-			console.log("span",snap.docs)
-			const notes = snap.docs.map(doc=>{
-				const data = doc.data();
-				console.log("daa",data)
-				data['id'] = doc.id;
-				return data
-			})
-			console.log(notes)
-			setNotes(notes)
-
-			
-			
-		})
-	},[])
-
-	const selectNote = (note,index) => {
-		console.log("app.js",note,index)
-		setSelectedNote(note)
-		setSelectedNoteIndex(index)
-	}
-
-	const deleteNote = () => {
-
-	}
-
-	const newNote = (title) => {
-		const note = {
-			title:title,
-			body:''
-		}
-		firestore.collection('notes').add({
-			title:note.title,
-			body:note.body,
-			timestamp: firebase.firestore.FieldValue.serverTimestamp()
-		})
-	}
-
-	const handleCreateNotebook = () => {
-
-	}
-
-	const noteUpdate = (id,noteObj) => {
-		console.log(id,noteObj);
-		if(id !==''){
-			firestore.collection('notes').doc(id).update({
-				title:noteObj.title,
-				body:noteObj.body,
-				// timestamp: firebase.firestore.FieldValue.serverTimestamp()
-			})
-		}
-		
-	}
 	return (
 		<div>
 

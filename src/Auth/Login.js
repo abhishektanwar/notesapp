@@ -24,7 +24,14 @@ const Login = () => {
 	}
 	
 	return (
-		<><div className="login-form-container">
+		
+		<>
+			<div className="app-title-container">
+				<h1 className="app-title">Gummed Notes</h1>
+				<p>Your go to notes taking app</p>
+			</div>
+			
+		<div className="login-form-container">
 			<form className="login-form" onSubmit={handleSubmit}>
 				<h1>Sign In</h1>
 				<div className="login-field">
