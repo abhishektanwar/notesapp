@@ -1,0 +1,36 @@
+.app-container{
+	background-color: blue;
+	display: flex;
+	align-items: center;
+	/* justify-content:space-around; */
+	height: 100vh;
+	box-sizing: border-box;
+}
+
+.sidebarContainer{
+	height:100vh;
+	margin-top: 0px;
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+    float: left;
+    overflow-y:auto;
+    overflow-x: hidden;
+	display: flex;
+    flex-direction: column;
+}
+
+.editorContainer{
+	margin-left: 30px;
+	height: 100%;
+	width: 100%;
+	/* position: absolute;? */
+	justify-content: center;
+}
+.quill {
+	height: 100%;
+	box-sizing: border-box;
+	width: 80%;
+	float: left;
+	
+}

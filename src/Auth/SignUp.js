@@ -33,6 +33,7 @@ const SignUp = () => {
 	return (
 		
 		<>
+			<div className="signup-form-container">
 			<h1>Sign Up</h1>
 			<div className="alert">
 				{error && <alert className="alert-error">{error}</alert>}
@@ -72,6 +73,8 @@ const SignUp = () => {
 			<div id="signup-link">
 				Already have an account?<Link to="/login"> Log In</Link>
 			</div>
+			</div>
+			
 		</>
 	)
 }

@@ -1,6 +1,7 @@
 import React,{useRef,useState} from 'react'
 import {Link, useHistory} from "react-router-dom"
 import { useAuth } from '../context/AuthContext'
+import './loginsignup.css'
 const Login = () => {
 	const emailRef = useRef()
 	const passwordRef = useRef()
@@ -23,7 +24,7 @@ const Login = () => {
 	}
 	
 	return (
-		<>
+		<><div className="login-form-container">
 			<form className="login-form" onSubmit={handleSubmit}>
 				<h1>Sign In</h1>
 				<div className="login-field">
@@ -45,15 +46,17 @@ const Login = () => {
 					/>
 				</div>
 				<button disabled={loading} className="signin-button" type="submit">Sign In</button>
-				<div className="test=creds">
-					<h3>Test Credentials</h3>
-					<h5>Email :</h5>
-					<h5>Password : </h5>
+				<div className="test-creds">
+					<h3 style={{paddingBottom:"10px"}}>Test Credentials</h3>
+					<h5>Email : a@a.com</h5>
+					<h5>Password : 123456</h5>
 				</div>
 			</form>
 			<div id="signup-link">
 				Don't have an account? <Link to="/signup">Sign Up</Link>
 			</div>
+		</div>
+			
 		</>
 	)
 }

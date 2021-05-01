@@ -6,7 +6,8 @@ import { firestore,auth } from './firebase'
 import { useHistory } from "react-router-dom"
 import Sidebar from './sidebar/Sidebar'
 import Editor from './editor/Editor'
-
+// import './home.css'
+import './homecss.css'
 const Home = () => {
 	const {currentUser,logout} = useAuth()
 	const [error,setError] = useState('')
@@ -99,7 +100,7 @@ const Home = () => {
 			{selectedNote ?
 			<Editor selectedNote={selectedNote} selectedNoteIndex={selectedNoteIndex} notes={notes} noteUpdate={noteUpdate} /> : null
 		} */}
-		<div className="container">
+		<div className="app-container" >
 			<Sidebar 
 				setSelectedNote = {setSelectedNote}
 				setSelectedNoteIndex = {setSelectedNoteIndex}

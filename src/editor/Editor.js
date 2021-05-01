@@ -8,12 +8,12 @@ import {firestore} from '../firebase'
 import { useAuth } from '../context/AuthContext'
 import useDebounce from '../helpers'
 import firebase from 'firebase/app'
+import './Styles.css'
 // import styles from './Styles'
 
 const Editor = ({selectedNote,selectedNoteIndex,notes,noteUpdate}) => {
 	const [text,setText] = useState(selectedNote.body)
 	const [title,setTitle] = useState(selectedNote.title)
-	const [id,setId] = useState('')
 	const {currentUser} = useAuth()
 	// useEffect(()=>{
 	// 	console.log(selectedNote)
