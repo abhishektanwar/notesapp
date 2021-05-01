@@ -86,20 +86,8 @@ const Home = () => {
 		
 	}
 	return (
-		// <div>
-		// 	{/* {auth.currentUser.uid} */}
-		// 	Home
-		// 	<button onClick={handleLogout}>Logout</button>
-		// 	{console.log(currentUser)}
-		// 	{console.log(currentUser.uid)}
-		// </div>
-
 		<div>
-			{/* <button onClick={handleCreateNotebook}>CreateNotebook</button> */}
-			{/* <Sidebar selectedNoteIndex={selectedNoteIndex} notes={notes} deleteNote={deleteNote} selectNote={selectNote} newNote={newNote} />
-			{selectedNote ?
-			<Editor selectedNote={selectedNote} selectedNoteIndex={selectedNoteIndex} notes={notes} noteUpdate={noteUpdate} /> : null
-		} */}
+
 		<div className="app-container" >
 			<Sidebar 
 				setSelectedNote = {setSelectedNote}
